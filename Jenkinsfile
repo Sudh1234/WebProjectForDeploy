@@ -20,6 +20,13 @@ pipeline {
 					sh 'mvn package'
 				 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 				 step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
+				
+				sh 'cp target/*.war /home/skumar/softwares/DeployViaJenkins/apache-tomcat-8.5.9/webapps'
+				sh 'cd /home/skumar/softwares/DeployViaJenkins/apache-tomcat-8.5.9/bin'
+				
+				sh './startup.sh'
+				
+				echo 'Deployed and server started'
 			}
 			
 		}
