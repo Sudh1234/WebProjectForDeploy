@@ -14,7 +14,7 @@ pipeline {
 		}
 		
 		stage('Package stage') {
-		agent { label 'MyNode' }
+		agent { label 'ApatleDeployNode' }
 			steps {
 					echo 'Package stage'
 					sh 'mvn package'
