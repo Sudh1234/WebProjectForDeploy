@@ -21,7 +21,7 @@ pipeline {
 				 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 				 step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
 				
-				sh 'cp target/*.war /home/skumar/softwares/DeployViaJenkins/apache-tomcat-8.5.9/webapps'
+				sh 'cp target/*.war /home/apatle/Installed_softwares/apache-tomcat-8.5.23/webapps'
 				
 				echo 'Deployed and server started'
 			}
