@@ -13,36 +13,18 @@ pipeline {
 			}
 		}
 		
-		stage('Compile stage') {
-		agent { label 'ApatleNode'}
-			steps {
-					echo 'compile stage'
-					sh 'mvn compile'
-			}
-		}
-		
-		stage('Testing Stage') {
-		agent { label 'NileshFirstNode' }
-			steps {
-				echo 'Testing stage'
-				sh 'mvn test'
-				 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-			}
-		}
-		
-		stage('Install stage') {
+		stage('Package stage') {
 		agent { label 'MyNode' }
 			steps {
-					echo 'install stage'
-					sh 'mvn install'
-				 step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+					echo 'Package stage'
+					sh 'mvn package'
+				 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+				 step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
 			}
 			
 		}
 
 	}
-	
-	
 
 	
 }
