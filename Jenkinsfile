@@ -9,7 +9,6 @@ pipeline {
 		agent { label 'MyNode' }
 			steps {
 				sh 'mvn clean'
-				
 			}
 		}
 		
@@ -25,11 +24,7 @@ pipeline {
 				
 				echo 'Deployed and server started'
 			}
-			
 		}
-
 	}
-
-	
 }
 
