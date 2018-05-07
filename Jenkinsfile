@@ -17,18 +17,11 @@ pipeline {
 			   echo 'Sonar stage'
 			  
 			    withSonarQubeEnv('My SonarQube Server') {
-       			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000' +
-          '-Dsonar.projectKey=com.demoweb:DemoDeploy ' +
-          '-Dsonar.login=Sudh1234 ' +
-          '-Dsonar.password=Sudh@1234 ' +
-          '-Dsonar.language=java ' +
-          '-Dsonar.sources=. ' +
-          '-Dsonar.tests=. ' +
-          '-Dsonar.test.inclusions=**/*Test*/** ' +
-          '-Dsonar.exclusions=**/*Test*/**'
+       			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
 			    }
      			}
 		 }
+	
 		
 
 	stage("QualityGate Stage"){    
