@@ -14,10 +14,8 @@ pipeline {
 		 stage('SonarQubeAnalysis Stage') {
 		 agent { label 'MyNode' }
     		  steps {
-     			   withSonarQubeEnv('SonarQube Scanner') {
 			   echo 'Sonar stage'
        			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
-       			 }
      			}
 		 }
 		
