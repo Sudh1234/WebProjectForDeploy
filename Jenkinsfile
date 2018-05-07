@@ -27,9 +27,9 @@ pipeline {
 		}
 		
  	stage('SonarQube analysis') {
-		withSonarQubeEnv('MyNode') {
+		withSonarQubeEnv('MyNode') 
      			 sh 'mvn org.sonarsource.scanner.maven:sonar:sonar'
-  			}
+  			
 		}
 	}
 }
