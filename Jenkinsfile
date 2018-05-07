@@ -12,6 +12,7 @@ pipeline {
 		}
 		
 		 stage('SonarQubeAnalysis Stage') {
+		 agent { label 'MyNode' }
     		  steps {
      			   withSonarQubeEnv('SonarQube Scanner') {
 			   echo 'Sonar stage'
