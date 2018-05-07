@@ -7,7 +7,7 @@ pipeline {
 				stage('Clean Stage') {
 		agent { label 'MyNode' }
 			steps {
-				sh 'mvn clean'
+				sh 'mvn clean install'
 			}
 		}
 		
