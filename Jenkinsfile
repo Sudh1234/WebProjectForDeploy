@@ -16,7 +16,7 @@ pipeline {
     		  steps {
 			   echo 'Sonar stage'
 			  
-			    withMaven(maven:'apache-maven-3.3.9') {
+			    withSonarQubeEnv('SonarQube') {
        			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
 			    }
      			}
