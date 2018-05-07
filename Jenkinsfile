@@ -27,8 +27,9 @@ pipeline {
 		
 
 
-stage("QualityGate stage"){    
-          withSonarQubeEnv('SONAR 7.1') {
+		stage("QualityGate Stage"){    
+		steps {
+          	withSonarQubeEnv('SONAR 7.1') {
                     sh "/home/skumar/Documents/SonarQubeMain/sonar-scanner-3.1.0.1141-linux/bin/sonar-scanner -X"
                     sh "cat target/sonar/report-task.txt"
                     def props = readProperties  file: 'target/sonar/report-task.txt'
@@ -51,7 +52,7 @@ stage("QualityGate stage"){
                     if ("ERROR".equals(qualitygate["projectStatus"]["status"])) {
                         error  "Quality Gate failure"
                     }
-                
+                }
    }
 }
 		
