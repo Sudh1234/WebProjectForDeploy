@@ -1,16 +1,23 @@
 pipeline {
 
-	//agent any
-	agent none
+	agent any
 
 	stages {
 
 				stage('Clean Stage') {
 		agent { label 'MyNode' }
 			steps {
-				sh 'mvn clean'
+				sh 'mvn clean install'
 			}
 		}
+		
+		 stage('SonarQubeAnalysis Stage') {
+		 agent { label 'MyNode' }
+    		  steps {
+			   echo 'Sonar stage'
+       			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
+     			}
+		 }
 		
 		stage('Package stage') {
 		agent { label 'ApatleDeployNode' }
@@ -25,6 +32,9 @@ pipeline {
 				echo 'Deployed and server started'
 			}
 		}
+		
+
+   		
 	}
 }
 
