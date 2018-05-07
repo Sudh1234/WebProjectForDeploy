@@ -25,6 +25,13 @@ pipeline {
 				echo 'Deployed and server started'
 			}
 		}
+		
+ 	stage('SonarQube analysis') {
+   	 withSonarQubeEnv('MyNode') 
+     	 sh 'mvn org.sonarsource.scanner.maven:sonar:sonar'
+    
+  }
+}
 	}
 }
 
