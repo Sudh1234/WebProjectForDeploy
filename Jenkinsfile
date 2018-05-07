@@ -27,7 +27,7 @@ pipeline {
 		
 
 
-stage("Quality Gate"){    
+stage("QualityGate stage"){    
           withSonarQubeEnv('SONAR 7.1') {
                     sh "/home/skumar/Documents/SonarQubeMain/sonar-scanner-3.1.0.1141-linux/bin/sonar-scanner -X"
                     sh "cat target/sonar/report-task.txt"
