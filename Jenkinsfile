@@ -45,13 +45,13 @@ stage("Quality Gate"){
                             return "SUCCESS".equals(ceTask["task"]["status"])
                         }
                     }
-                    def response2 = httpRequest url : "http://localhost:9000/api/qualitygates/project_status?analysisId=" + ceTask["task"]["analysisId"], authentication: 'jenkins_scanner'
+                    def response2 = httpRequest url : "http://localhost:9000/api/qualitygates/project_status?analysisId=" + ceTask["task"]["analysisId"]
                     def qualitygate =  readJSON text: response2.content
                     echo qualitygate.toString()
                     if ("ERROR".equals(qualitygate["projectStatus"]["status"])) {
                         error  "Quality Gate failure"
                     }
-                }
+                
    }
 }
 		
