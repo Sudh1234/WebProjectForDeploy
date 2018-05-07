@@ -1,7 +1,6 @@
 pipeline {
 
-	//agent any
-	agent none
+	agent any
 
 	stages {
 
@@ -11,6 +10,17 @@ pipeline {
 				sh 'mvn clean'
 			}
 		}
+		
+		 stage('SonarQubeAnalysis Stage') {
+   		   tools {
+    			    sonarQube 'SonarQube Scanner 2.8'
+     			 }
+    		  steps {
+     			   withSonarQubeEnv('SonarQube Scanner') {
+			   echo 'Sonar stage'
+       			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
+       			 }
+     		}
 		
 		stage('Package stage') {
 		agent { label 'ApatleDeployNode' }
@@ -26,11 +36,8 @@ pipeline {
 			}
 		}
 		
- 	stage('SonarQube analysis') {
-		withSonarQubeEnv('MyNode') 
-     			 sh 'mvn org.sonarsource.scanner.maven:sonar:sonar'
-  			
-		}
+
+   		
 	}
 }
 
