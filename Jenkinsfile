@@ -15,7 +15,10 @@ pipeline {
 		 agent { label 'MyNode' }
     		  steps {
 			   echo 'Sonar stage'
+			  
+			    withMaven(maven:'apache-maven-3.3.9') {
        			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
+			    }
      			}
 		 }
 		
