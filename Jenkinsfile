@@ -19,14 +19,17 @@ pipeline {
      			}
 		 }
 		
-		stage("QualityGate Stage"){
- 			 timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-  				  def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-  	 			 if (qg.status != 'OK') {
-   	  				 error "Pipeline aborted due to quality gate failure: ${qg.status}"
-   				 }
- 			 }
-		}
+		stage("QualityGate Stage") {
+			agent { label 'MyNode' }
+           		 steps {
+              			  timeout(time: 1, unit: 'HOURS') {
+              	 		     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+               			    // true = set pipeline to UNSTABLE, false = don't
+                    		   // Requires SonarQube Scanner for Jenkins 2.7+
+                   		 waitForQualityGate abortPipeline: true
+              			  }
+           			}
+       		 }
 		
 		stage('Package stage') {
 		agent { label 'ApatleDeployNode' }
