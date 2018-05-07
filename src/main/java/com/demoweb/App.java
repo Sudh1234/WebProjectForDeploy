@@ -9,6 +9,7 @@ public class App
 		if(number%2 == 0){
 			result = true;
 		}
+		System.out.println("d4 "+result);
 		return result;
 	}
 

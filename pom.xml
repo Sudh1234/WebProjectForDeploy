@@ -7,6 +7,10 @@
 	<version>1.0.1-SNAPSHOT</version>
 	<name>DemoDeploy Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<sonar.host.url> http://localhost:9000/ </sonar.host.url>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -36,7 +40,15 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.4.0.905</version>
+			</plugin>
+
 		</plugins>
+
 
 	</build>
 </project>
