@@ -20,7 +20,8 @@ pipeline {
 			   echo 'Sonar stage'
        			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
        			 }
-     		}
+     			}
+		 }
 		
 		stage('Package stage') {
 		agent { label 'ApatleDeployNode' }
