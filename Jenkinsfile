@@ -16,7 +16,7 @@ pipeline {
     		  steps {
 			   echo 'Sonar stage'
 			  
-			    withSonarQubeEnv('SonarQube') {
+			    withSonarQubeEnv('My SonarQube Server') {
        			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
 			    }
      			}
