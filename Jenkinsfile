@@ -25,6 +25,7 @@ pipeline {
 		
 
 	stage("QualityGate Stage"){    
+		agent { label 'MyNode' }
 		steps {
 		  timeout(time: 1, unit: 'HOURS') { 
 			  echo 'Quaity Gate stage'
