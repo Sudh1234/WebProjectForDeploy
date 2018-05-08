@@ -5,7 +5,7 @@ pipeline {
 	stages {
 
 				stage('Clean Stage') {
-		agent { label 'MyNode' }
+		agent { label 'NileshFirstNode' }
 			steps {
 				sh 'mvn clean install'
 			}
