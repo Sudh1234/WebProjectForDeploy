@@ -6,6 +6,8 @@ public class GetName {
 		
 		int o =0;
 		
+		System.out.println(o);
+		
 	}
 	
 }
