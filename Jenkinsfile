@@ -29,8 +29,8 @@ pipeline {
 		steps {
 		  timeout(time: 1, unit: 'HOURS') { 
 			  echo 'Quaity Gate stage'
-           sh "qg = waitForQualityGate"
-           sh "if (qg.status != 'OK') {   error 'Pipeline aborted due to quality gate failure: ${qg.status}'   }"
+           sh "waitForQualityGate"
+           sh "if (waitForQualityGate.status != 'OK') {   error 'Pipeline aborted due to quality gate failure.'   }"
         }
    }
 }	
