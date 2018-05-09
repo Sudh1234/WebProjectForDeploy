@@ -11,16 +11,16 @@ pipeline {
 			}
 		}
 		
-		/* stage('SonarQubeAnalysis Stage') {
+		stage('SonarQubeAnalysis Stage') {
 		 agent { label 'MyNode' }
     		  steps {
 			   echo 'Sonar stage'
 			  
 			    withSonarQubeEnv('mysonarqube') {
-       			   sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'
+       			/*    sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000'*/
 			    }
      			}
-		 }*/
+		 }
 	
 		
 
