@@ -5,7 +5,7 @@ pipeline {
 	stages {
 
 				stage('Clean Stage') {
-		agent { label 'NileshFirstNode' }
+		agent { label 'MyNode' }
 			steps {
 				sh 'mvn clean install'
 			}
@@ -35,7 +35,7 @@ pipeline {
    }
 }	
 		stage('Package stage') {
-		agent { label 'ApatleDeployNode' }
+		agent { label 'MyNode' }
 			steps {
 					echo 'Package stage'
 					sh 'mvn package'
