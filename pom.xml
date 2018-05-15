@@ -10,7 +10,6 @@
 	<properties>
 		<sonar.host.url> http://localhost:9000/ </sonar.host.url>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -24,7 +23,6 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>DemoDeploy</finalName>
