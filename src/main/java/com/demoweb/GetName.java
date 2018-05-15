@@ -5,7 +5,7 @@ public class GetName {
 	public static String dd ;
 
 	public void getname() {
-		dd ="dd";
+		dd ="ddw";
 		
 		int o =0;
 		
